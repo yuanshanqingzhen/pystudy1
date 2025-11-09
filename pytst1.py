@@ -17,7 +17,15 @@ def word_frequency_analyzer(file_path, output_to_file=False, output_filename="wo
             text = file.read()
         
         # 2. 清洗和分割单词
-        # 使用正则表达式只保留字母和连字符，转换为小写
+        # 使用正则表达式只保留字母和连字符
+        # \b - 单词边界，确保匹配完整单词
+        # [a-zA-Z\-] - 字符类，匹配：
+        # a-z：小写字母
+        # A-Z：大写字母
+        # \-：连字符 -
+        # + - 量词，匹配前面的字符类一次或多次
+        # \b - 结束的单词边界
+        # 转换为小写
         words = re.findall(r'\b[a-zA-Z\-]+\b', text)
         words = [word.lower() for word in words]
         
