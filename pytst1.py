@@ -35,6 +35,7 @@ def word_frequency_analyzer(file_path, output_to_file=False, output_filename="wo
             word_count[word] += 1
         
         # 4. 按频率排序（频率相同按字母顺序）
+        # key=lambda x: (-x[1], x[0]) 使主要条件（频率）降序，次要条件（单词字母）升序
         sorted_words = sorted(word_count.items(), key=lambda x: (-x[1], x[0]))
         
         # 5. 输出结果
